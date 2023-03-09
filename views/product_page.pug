@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  p It's so sweet, make you wanna lick the wrapper
+
+  a(href='/') Homepage
+    
+  p Update categories 
+  p Update manufacturers
+
+    p Check out the goods, foo 
+
+  ul
+    each product in list_products 
+      //- li= product.image 
+      li= product.name
+      li= product.price
+      li= product.stock
+      button(type=) edit button
+      //- upon clicking edit button, repopulate same page but with adjutable value of that product box
+

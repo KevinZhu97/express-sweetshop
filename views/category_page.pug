@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1= title
+  p Update Category
+
+
+  ul
+    each category in list_categories 
+      if category.id === currentId
+        form(method='POST' action=' ' )
+          input(type='text', name='name', value=category.name )
+          |
+          input(type='text', name='id', value=currentId)
+          |
+          input(type='submit', value='update')
+          |
+          input(type='submit', value='delete')
+      else
+        li= category.name
+        li= category.id
+      
+
+      form(action=category.url + '/update')
+        button(type=) edit button
+
+
+  a() Add Category
