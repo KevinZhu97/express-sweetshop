@@ -26,17 +26,21 @@ const ProductSchema = new Schema({
         type: Number,
     },
     category: [{type: Schema.Types.ObjectId, ref: "Category"}],
+    image: {
+        data: Buffer,
+        contentType: String
+    }
 })
 
-// Getter
-ProductSchema.path('price').get(function(num) {
-    return (num / 100).toFixed(2);
-  });
+// // Getter
+// ProductSchema.path('price').get(function(num) {
+//     return (num / 100).toFixed(2);
+//   });
   
-  // Setter
-  ProductSchema.path('price').set(function(num) {
-    return num * 100;
-  });
+// //   // Setter
+//   ProductSchema.path('price').set(function(num) {
+//     return num * 100;
+//   });
 
 ProductSchema.virtual("url").get(function() {
     return `/products/${this._id}`;

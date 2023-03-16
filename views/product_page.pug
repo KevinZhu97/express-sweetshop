@@ -10,13 +10,33 @@ block content
   p Update manufacturers
 
     p Check out the goods, foo 
+    p Add some goods, foo
+
+    a(href='/products/create') Add product
 
   ul
     each product in list_products 
-      //- li= product.image 
-      li= product.name
-      li= product.price
-      li= product.stock
-      button(type=) edit button
+      if currentId === product.id 
+        form(method='POST' action=' ' )
+          input(type='text', name='name', value=product.name )
+          |
+          input(type='text', name='price', value=product.price)
+          |
+          input(type='text', name='stock', value=product.stock)
+          |
+          form(method='POST' action='')
+            button(type='submit') Update
+          |
+          form(method='POST' action=product.url+'/delete ')
+            button(type='submit') Delete
+      else 
+        li= product.name
+        li= product.price
+        li= product.stock
+        //- img(src='https://www.w3schools.com/images/w3schools_green.jpg')
+        //- img(src="data:image/<%=image.img.contentType%>;base64,
+        //-              <%=image.img.data.toString('base64')%>")
+        //- a(href=product.url+'/update') Update
+        
       //- upon clicking edit button, repopulate same page but with adjutable value of that product box
 

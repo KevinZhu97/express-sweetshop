@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  p Lollipop Shop 
+
+  form(method='POST' action='/products/create' enctype='multipart/form-data')
+    input(type='text', name='name', placeholder= "name", value=(undefined===product ? '' : product.name ))
+    |
+    input(type='text', name='upc', placeholder='upc', value=(undefined===product ? '' : product.upc))
+    |
+    input(type='text', name='description', placeholder='description', value=(undefined===product ? '' : product.description))
+    |
+    input(type='text', name='stock', placeholder='stock', value=(undefined===product ? '' : product.stock))
+    |
+    input(type='text', name='price', placeholder='price', value=(undefined===product ? '' : product.price))
+    |
+    input(type='file', name='uploaded_file')
+    |
+    button(type='submit') Create
+  
+  if errors
+    ul
+      for error in errors
+        li!=error.msg
